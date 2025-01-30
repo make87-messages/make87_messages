@@ -1,0 +1,7 @@
+syntax = "proto3";
+package make87_messages.datetime;
+import "google/protobuf/timestamp.proto";
+
+message TimeStamp {
+    google.protobuf.Timestamp timestamp = 1;
+}
