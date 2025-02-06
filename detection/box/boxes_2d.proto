@@ -1,0 +1,15 @@
+syntax = "proto3";
+package make87_messages.detection.box;
+import "make87_messages/detection/box/box_2d.proto";
+import "make87_messages/core/header.proto";
+
+message Boxes2D {
+    make87_messages.core.Header header = 1;
+    repeated make87_messages.detection.box.Box2D boxes = 2;
+}
+
+message Boxes2DAxisAligned {
+    make87_messages.core.Header header = 1;
+    repeated make87_messages.detection.box.Box2DAxisAligned boxes = 2;
+}
+
