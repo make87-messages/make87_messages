@@ -1,5 +1,5 @@
 syntax = "proto3";
-package make87_messages.images.compressed;
+package make87_messages.image.compressed;
 import "make87_messages/core/header.proto";
 
 message ImagePNG {
