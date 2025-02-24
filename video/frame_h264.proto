@@ -15,4 +15,7 @@ message FrameH264 {
 
     // The height of the frame (in pixels).
     uint32 height = 4;
+
+    // Marked if the frame is a keyframe.
+    bool is_keyframe = 5;
 }
