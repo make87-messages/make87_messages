@@ -6,7 +6,7 @@ import "make87_messages/video/frame_h265.proto";
 import "make87_messages/video/frame_av1.proto";
 
 
-message Frame {
+message FrameAny {
     // The timestamp of the log entry.
     make87_messages.core.Header header = 1;
 

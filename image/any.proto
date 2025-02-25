@@ -7,7 +7,7 @@ import "make87_messages/image/uncompressed/image_rgba.proto";
 import "make87_messages/image/compressed/image_jpeg.proto";
 import "make87_messages/image/compressed/image_png.proto";
 
-message Image {
+message ImageAny {
     make87_messages.core.Header header = 1;
 
     // One of the following:
