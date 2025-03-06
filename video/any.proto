@@ -20,3 +20,19 @@ message FrameAny {
         FrameAV1 av1 = 4;
     }
 }
+
+
+message FrameMpegTsAny {
+    // The timestamp of the log entry.
+    make87_messages.core.Header header = 1;
+
+    // One of the following:
+    // - The MPEG-TS frame containing H.264 encoded frame data.
+    // - The MPEG-TS frame containing H.265 encoded frame data
+    // - The MPEG-TS frame containing AV1 encoded frame data
+    oneof data {
+        FrameMpegTsH264 h264 = 2;
+        FrameMpegTsH265 h265 = 3;
+        FrameMpegTsAV1 av1 = 4;
+    }
+}
