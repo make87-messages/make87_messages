@@ -7,7 +7,7 @@ message FrameAV1 {
     // The timestamp of the log entry.
     make87_messages.core.Header header = 1;
 
-    // The H.264 encoded frame data.
+    // The AV1 encoded frame data.
     bytes data = 2;
 
     // The width of the frame (in pixels).

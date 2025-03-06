@@ -1,0 +1,22 @@
+syntax = "proto3";
+package make87_messages.video.mpeg_ts;
+import "make87_messages/core/header.proto";
+import "make87_messages/video/mpeg_ts/frame_h264.proto";
+import "make87_messages/video/mpeg_ts/frame_h265.proto";
+import "make87_messages/video/mpeg_ts/frame_av1.proto";
+
+
+message FrameMpegTsAny {
+    // The timestamp of the log entry.
+    make87_messages.core.Header header = 1;
+
+    // One of the following:
+    // - The H.264 encoded frame data.
+    // - The H.265 encoded frame data.
+    // - The AV1 encoded frame data.
+    oneof data {
+        FrameMpegTsH264 h264 = 2;
+        FrameMpegTsH265 h265 = 3;
+        FrameMpegTsAV1 av1 = 4;
+    }
+}
