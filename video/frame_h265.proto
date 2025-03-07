@@ -4,10 +4,15 @@ import "make87_messages/core/header.proto";
 
 
 message FrameH265 {
+    message Fraction {
+        uint32 num = 1;
+        uint32 den = 2;
+    }
+
     // The timestamp of the log entry.
     make87_messages.core.Header header = 1;
 
-    // The H.265 encoded frame data.
+    // The H.265 encoded frame data. This is the raw NAL unit data in AnnexB format.
     bytes data = 2;
 
     // The width of the frame (in pixels).
@@ -18,6 +23,18 @@ message FrameH265 {
 
     // Marked if the frame is a keyframe.
     bool is_keyframe = 5;
+
+    // Presentation timestamp (PTS).
+    uint64 pts = 6;
+
+    // Decoding timestamp (DTS).
+    uint64 dts = 7;
+
+    // Frame duration in time units.
+    uint32 duration = 8;
+
+    // Time base as a fraction (e.g., {1, 90000} for a 90kHz clock).
+    Fraction time_base = 9;
 }
 
 message FrameMpegTsH265 {
