@@ -25,10 +25,10 @@ message FrameH264 {
     bool is_keyframe = 5;
 
     // Presentation timestamp (PTS).
-    uint64 pts = 6;
+    int64 pts = 6;
 
     // Decoding timestamp (DTS).
-    uint64 dts = 7;
+    int64 dts = 7;
 
     // Frame duration in time units.
     uint32 duration = 8;
