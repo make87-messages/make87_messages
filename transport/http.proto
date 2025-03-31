@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package make87_messages.transport;
+package make87_messages.transport.http;
 import "make87_messages/core/header.proto";
 import "make87_messages/transport/endpoint.proto";
 import "make87_messages/transport/auth.proto";
@@ -9,10 +9,10 @@ import "make87_messages/transport/auth.proto";
 message HTTPRequest {
   make87_messages.core.Header header = 1;
   // Connection details.
-  Endpoint endpoint = 2;
+  endpoint.Endpoint endpoint = 2;
 
   // HTTP method (e.g., GET, POST).
-  string method = 3;
+  HTTPMethod method = 3;
 
   // HTTP headers.
   map<string, string> headers = 4;

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package make87_messages.transport;
+package make87_messages.transport.endpoint;
 import "make87_messages/core/header.proto";
 
 // A reusable endpoint for connection details.
