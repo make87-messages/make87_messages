@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package make87_messages.transport.auth;
+import "make87_messages/core/header.proto";
+
+
+// Authentication messages common to both protocols.
+message BasicAuth {
+  make87_messages.core.Header header = 1;
+  string username = 2;
+  string password = 3;
+}
+
+message DigestAuth {
+  make87_messages.core.Header header = 1;
+  string username = 2;
+  string password = 3;
+  // The realm provided by the server.
+  string realm = 4;
+  // The nonce value provided by the server.
+  string nonce = 5;
+  // Optional opaque value.
+  string opaque = 6;
+  // The algorithm used for digest authentication.
+  DigestAlgorithm algorithm = 7;
+  // Quality of Protection (e.g., "auth" or "auth-int").
+  string qop = 8;
+}
+
+// Enum for Digest Authentication algorithms.
+enum DigestAlgorithm {
+  UNSPECIFIED = 0;
+  MD5 = 1;
+  MD5_SESS = 2;
+  SHA_256 = 3;
+  SHA_256_SESS = 4;
+  SHA_512_256 = 5;
+  SHA_512_256_SESS = 6;
+}
+
+// Bearer token authentication for HTTP.
+message BearerToken {
+  make87_messages.core.Header header = 1;
+  string token = 2;
+}

@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package make87_messages.transport;
+import "make87_messages/core/header.proto";
+import "make87_messages/transport/endpoint.proto";
+import "make87_messages/transport/auth.proto";
+
+// RTSP-specific request message.
+message RTSPRequest {
+  make87_messages.core.Header header = 1;
+  // Connection details.
+  Endpoint endpoint = 2;
+
+  // RTSP methods are defined via an enum.
+  RTSPMethod method = 3;
+
+  // RTSP headers.
+  map<string, string> headers = 4;
+
+  // For RTSP, typically only Basic and Digest auth are supported.
+  oneof auth {
+    auth.BasicAuth basic_auth = 5;
+    auth.DigestAuth digest_auth = 6;
+  }
+}
+
+// Enum of common RTSP methods.
+enum RTSPMethod {
+  UNSPECIFIED = 0;
+  OPTIONS = 1;
+  DESCRIBE = 2;
+  SETUP = 3;
+  PLAY = 4;
+  PAUSE = 5;
+  TEARDOWN = 6;
+  GET_PARAMETER = 7;
+  SET_PARAMETER = 8;
+  RECORD = 9;
+}

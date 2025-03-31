@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package make87_messages.transport;
+import "make87_messages/core/header.proto";
+import "make87_messages/transport/endpoint.proto";
+import "make87_messages/transport/auth.proto";
+
+// HTTP-specific request message.
+message HTTPRequest {
+  make87_messages.core.Header header = 1;
+  // Connection details.
+  Endpoint endpoint = 2;
+
+  // HTTP method (e.g., GET, POST).
+  string method = 3;
+
+  // HTTP headers.
+  map<string, string> headers = 4;
+
+  // Request body.
+  bytes body = 5;
+
+  // HTTP supports a broader set of authentication options.
+  oneof auth {
+    auth.BasicAuth basic_auth = 6;
+    auth.DigestAuth digest_auth = 7;
+    auth.BearerToken bearer_token = 8;
+  }
+}
+
+enum HTTPMethod {
+  UNSPECIFIED = 0;
+  GET = 1;
+  POST = 2;
+  PUT = 3;
+  DELETE = 4;
+  HEAD = 5;
+  OPTIONS = 6;
+  PATCH = 7;
+}
