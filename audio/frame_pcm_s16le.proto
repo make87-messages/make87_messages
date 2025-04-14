@@ -1,0 +1,21 @@
+syntax = "proto3";
+package make87_messages.audio;
+
+import "make87_messages/core/header.proto";
+
+message FramePcmS16le {
+    make87_messages.core.Header header = 1;
+
+    // Interleaved PCM16 little-endian audio samples.
+    bytes data = 2;
+
+    // Presentation timestamp (in units of time_base).
+    int64 pts = 3;
+
+    // Time base as a fraction (e.g., {1, 48000} for 48kHz audio clock).
+    message Fraction {
+        uint32 num = 1;
+        uint32 den = 2;
+    }
+    Fraction time_base = 4;
+}

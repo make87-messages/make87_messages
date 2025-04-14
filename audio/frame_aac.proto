@@ -1,0 +1,21 @@
+syntax = "proto3";
+package make87_messages.audio;
+
+import "make87_messages/core/header.proto";
+
+message FrameAac {
+    make87_messages.core.Header header = 1;
+
+    // Raw AAC-encoded data (assumed to include ADTS headers).
+    bytes data = 2;
+
+    // Presentation timestamp (in units of time_base).
+    int64 pts = 3;
+
+    // Time base (e.g., {1, 90000} for 90kHz media clock).
+    message Fraction {
+        uint32 num = 1;
+        uint32 den = 2;
+    }
+    Fraction time_base = 4;
+}

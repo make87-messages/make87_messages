@@ -1,0 +1,17 @@
+syntax = "proto3";
+package make87_messages.audio;
+
+import "make87_messages/core/header.proto";
+import "make87_messages/audio/frame_pcm_s16le.proto";
+import "make87_messages/audio/frame_aac.proto";
+import "make87_messages/audio/frame_opus.proto";
+
+message FrameAny {
+    make87_messages.core.Header header = 1;
+
+    oneof data {
+        FramePcmS16le pcm_s16le = 2;
+        FrameAac aac = 3;
+        FrameOpus opus = 4;
+    }
+}
