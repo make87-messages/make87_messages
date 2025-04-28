@@ -18,4 +18,7 @@ message FramePcmS16le {
         uint32 den = 2;
     }
     Fraction time_base = 4;
+
+    // Channel count (e.g., 2 for stereo).
+    uint32 channels = 5;
 }
