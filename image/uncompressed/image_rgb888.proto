@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package make87_messages.image.uncompressed;
+
+import "make87_messages/core/header.proto";
+
+message ImageRGB888 {
+    make87_messages.core.Header header = 1;
+    uint32 width = 2;
+    uint32 height = 3;
+    bytes data = 4; // Raw RGB888 data in row-major order
+}
