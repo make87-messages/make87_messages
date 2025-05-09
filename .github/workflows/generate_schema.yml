@@ -113,7 +113,6 @@ jobs:
       - name: Dereference each JSON schema file
         run: |
           mkdir -p out_deref
-          export DEREF_OUT_PREFIX="out_deref/"
           find out -name '*.json' > json_files.txt
           # Copy files to out_deref with flattened names
           while read -r file; do
@@ -122,7 +121,7 @@ jobs:
             schema_name="${schema_name//\//.}"
             cp "$file" "out_deref/${schema_name}.json"
           done < json_files.txt
-          # Now dereference all in one node call
+          # Now dereference all in one node call (in-place)
           node ./deref_each.js $(find out_deref -name '*.json')
 
       - name: Combine dereferenced files into MAKE87.schemas.yml
@@ -151,4 +150,5 @@ jobs:
           git add MAKE87.schemas.yml
           git commit -m "chore: regenerate MAKE87.schemas.yml" || echo "No changes to commit"
           git push origin HEAD
+
 
