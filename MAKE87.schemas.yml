@@ -1,0 +1,4313 @@
+openapi: 3.1.0
+info:
+  title: Combined Make87 Schemas
+  version: 1.0.0
+components:
+  schemas:
+    "make87_messages.detection.box.Box2DAxisAligned":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "geometry": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Box 2 D Axis Aligned"
+          },
+          "confidence": {
+            "type": "number"
+          },
+          "classId": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Box 2 D Axis Aligned"
+      }
+    "make87_messages.audio.FrameAac":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "description": "Raw AAC-encoded data (assumed to include ADTS headers).",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "pts": {
+            "type": "string",
+            "description": "Presentation timestamp (in units of time_base)."
+          },
+          "timeBase": {
+            "properties": {
+              "num": {
+                "type": "integer"
+              },
+              "den": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Fraction",
+            "description": "Time base (e.g., {1, 90000} for 90kHz media clock)."
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Frame Aac"
+      }
+    "make87_messages.video.FrameMpegTsAV1":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "description": "The MPEG-TS frame containing AV1 encoded frame data. Please note this is not a 188-byte packet but all required packets to recreate a full frame.",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Frame Mpeg Ts AV 1"
+      }
+    "make87_messages.primitive.SInt64":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "S Int 64"
+      }
+    "make87_messages.image.uncompressed.ImageGray":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "pixels": {
+            "items": {
+              "properties": {
+                "intensity": {
+                  "type": "integer",
+                  "description": "Grayscale intensity value"
+                }
+              },
+              "additionalProperties": true,
+              "type": "object",
+              "title": "Pixel"
+            },
+            "type": "array",
+            "description": "List of pixels in row-major order"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Image Gray"
+      }
+    "make87_messages.video.FrameMpegTsH264":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "description": "The MPEG-TS frame containing H.264 encoded frame data. Please note this is not a 188-byte packet but all required packets to recreate a full frame.",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Frame Mpeg Ts H 264"
+      }
+    "make87_messages.image.uncompressed.ImageRGBA":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "pixels": {
+            "items": {
+              "properties": {
+                "red": {
+                  "type": "integer"
+                },
+                "green": {
+                  "type": "integer"
+                },
+                "blue": {
+                  "type": "integer"
+                },
+                "alpha": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": true,
+              "type": "object",
+              "title": "Pixel"
+            },
+            "type": "array",
+            "description": "List of pixels in row-major order"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Image RGBA"
+      }
+    "make87_messages.detection.box.Box2D":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "geometry": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              },
+              "rotation": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Box 2 D"
+          },
+          "confidence": {
+            "type": "number"
+          },
+          "classId": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Box 2 D"
+      }
+    "make87_messages.spatial.translation.Translation2D":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Translation 2 D"
+      }
+    "make87_messages.primitive.SFixed64":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "S Fixed 64"
+      }
+    "make87_messages.transport.http.HTTPRequest":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "endpoint": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "protocol": {
+                "type": "string",
+                "description": "The protocol scheme, e.g., \"http\" or \"rtsp\"."
+              },
+              "host": {
+                "type": "string",
+                "description": "The server's host or IP address."
+              },
+              "port": {
+                "type": "integer",
+                "description": "The port number."
+              },
+              "path": {
+                "type": "string",
+                "description": "The resource path."
+              },
+              "queryParams": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object",
+                "description": "Optional query parameters."
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Endpoint",
+            "description": "A reusable endpoint for connection details."
+          },
+          "method": {
+            "enum": [
+              "UNSPECIFIED",
+              0,
+              "GET",
+              1,
+              "POST",
+              2,
+              "PUT",
+              3,
+              "DELETE",
+              4,
+              "HEAD",
+              5,
+              "OPTIONS",
+              6,
+              "PATCH",
+              7
+            ],
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "title": "HTTP Method"
+          },
+          "headers": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "description": "HTTP headers."
+          },
+          "body": {
+            "type": "string",
+            "description": "Request body.",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "basicAuth": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "username": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Basic Auth",
+            "description": "Authentication messages common to both protocols."
+          },
+          "digestAuth": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "username": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "realm": {
+                "type": "string",
+                "description": "The realm provided by the server."
+              },
+              "nonce": {
+                "type": "string",
+                "description": "The nonce value provided by the server."
+              },
+              "opaque": {
+                "type": "string",
+                "description": "Optional opaque value."
+              },
+              "algorithm": {
+                "enum": [
+                  "UNSPECIFIED",
+                  0,
+                  "MD5",
+                  1,
+                  "MD5_SESS",
+                  2,
+                  "SHA_256",
+                  3,
+                  "SHA_256_SESS",
+                  4,
+                  "SHA_512_256",
+                  5,
+                  "SHA_512_256_SESS",
+                  6
+                ],
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ],
+                "title": "Digest Algorithm",
+                "description": "Enum for Digest Authentication algorithms."
+              },
+              "qop": {
+                "type": "string",
+                "description": "Quality of Protection (e.g., \"auth\" or \"auth-int\")."
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Digest Auth"
+          },
+          "bearerToken": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "token": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Bearer Token",
+            "description": "Bearer token authentication for HTTP."
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "basicAuth"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "digestAuth"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "bearerToken"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "required": [
+                  "basicAuth"
+                ]
+              },
+              {
+                "required": [
+                  "digestAuth"
+                ]
+              },
+              {
+                "required": [
+                  "bearerToken"
+                ]
+              }
+            ]
+          }
+        ],
+        "title": "HTTP Request",
+        "description": "HTTP-specific request message."
+      }
+    "make87_messages.primitive.Bool":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Bool"
+      }
+    "make87_messages.geometry.box.Boxes2D":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "boxes": {
+            "items": {
+              "properties": {
+                "header": {
+                  "properties": {
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "referenceId": {
+                      "type": "string"
+                    },
+                    "entityPath": {
+                      "type": "string",
+                      "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                    }
+                  },
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Header"
+                },
+                "x": {
+                  "type": "number"
+                },
+                "y": {
+                  "type": "number"
+                },
+                "width": {
+                  "type": "number"
+                },
+                "height": {
+                  "type": "number"
+                },
+                "rotation": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": true,
+              "type": "object",
+              "title": "Box 2 D"
+            },
+            "type": "array"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Boxes 2 D"
+      }
+    "make87_messages.geometry.box.Box2D":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "width": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          },
+          "rotation": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Box 2 D"
+      }
+    "make87_messages.image.uncompressed.ImageRGBAny":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "rgb888": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "data": {
+                "type": "string",
+                "description": "Raw RGB888 data in row-major order",
+                "format": "binary",
+                "binaryEncoding": "base64"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Image RGB 888"
+          },
+          "rgba8888": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "data": {
+                "type": "string",
+                "description": "Raw RGBA8888 data in row-major order",
+                "format": "binary",
+                "binaryEncoding": "base64"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Image RGBA 8888"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "rgb888"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "rgba8888"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "required": [
+                  "rgb888"
+                ]
+              },
+              {
+                "required": [
+                  "rgba8888"
+                ]
+              }
+            ]
+          }
+        ],
+        "title": "Image RGB Any"
+      }
+    "make87_messages.transport.endpoint.Endpoint":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "protocol": {
+            "type": "string",
+            "description": "The protocol scheme, e.g., \"http\" or \"rtsp\"."
+          },
+          "host": {
+            "type": "string",
+            "description": "The server's host or IP address."
+          },
+          "port": {
+            "type": "integer",
+            "description": "The port number."
+          },
+          "path": {
+            "type": "string",
+            "description": "The resource path."
+          },
+          "queryParams": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "description": "Optional query parameters."
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Endpoint",
+        "description": "A reusable endpoint for connection details."
+      }
+    "make87_messages.detection.box.Boxes2D":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "boxes": {
+            "items": {
+              "properties": {
+                "header": {
+                  "properties": {
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "referenceId": {
+                      "type": "string"
+                    },
+                    "entityPath": {
+                      "type": "string",
+                      "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                    }
+                  },
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Header"
+                },
+                "geometry": {
+                  "properties": {
+                    "header": {
+                      "properties": {
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "referenceId": {
+                          "type": "string"
+                        },
+                        "entityPath": {
+                          "type": "string",
+                          "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                        }
+                      },
+                      "additionalProperties": true,
+                      "type": "object",
+                      "title": "Header"
+                    },
+                    "x": {
+                      "type": "number"
+                    },
+                    "y": {
+                      "type": "number"
+                    },
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    },
+                    "rotation": {
+                      "type": "number"
+                    }
+                  },
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Box 2 D"
+                },
+                "confidence": {
+                  "type": "number"
+                },
+                "classId": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": true,
+              "type": "object",
+              "title": "Box 2 D"
+            },
+            "type": "array"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Boxes 2 D"
+      }
+    "make87_messages.primitive.SInt32":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "S Int 32"
+      }
+    "make87_messages.core.Empty":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Empty"
+      }
+    "make87_messages.primitive.Bytes":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "string",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Bytes"
+      }
+    "make87_messages.video.FrameAV1":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "description": "The AV1 encoded frame data.",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "width": {
+            "type": "integer",
+            "description": "The width of the frame (in pixels)."
+          },
+          "height": {
+            "type": "integer",
+            "description": "The height of the frame (in pixels)."
+          },
+          "isKeyframe": {
+            "type": "boolean",
+            "description": "Marked if the frame is a keyframe."
+          },
+          "pts": {
+            "type": "string",
+            "description": "Presentation timestamp (PTS)."
+          },
+          "dts": {
+            "type": "string",
+            "description": "Decoding timestamp (DTS)."
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Frame duration in time units."
+          },
+          "timeBase": {
+            "properties": {
+              "num": {
+                "type": "integer"
+              },
+              "den": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Fraction"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Frame AV 1"
+      }
+    "make87_messages.image.uncompressed.ImageYUV422":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "yPlane": {
+            "type": "string",
+            "description": "size = width * height",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "uPlane": {
+            "type": "string",
+            "description": "size = (width / 2) * height",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "vPlane": {
+            "type": "string",
+            "description": "size = (width / 2) * height",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Image YUV 422",
+        "description": "Planar 4:2:2 YUV — higher chroma fidelity"
+      }
+    "make87_messages.transport.rtsp.RTSPRequest":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "endpoint": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "protocol": {
+                "type": "string",
+                "description": "The protocol scheme, e.g., \"http\" or \"rtsp\"."
+              },
+              "host": {
+                "type": "string",
+                "description": "The server's host or IP address."
+              },
+              "port": {
+                "type": "integer",
+                "description": "The port number."
+              },
+              "path": {
+                "type": "string",
+                "description": "The resource path."
+              },
+              "queryParams": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object",
+                "description": "Optional query parameters."
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Endpoint",
+            "description": "A reusable endpoint for connection details."
+          },
+          "method": {
+            "enum": [
+              "UNSPECIFIED",
+              0,
+              "OPTIONS",
+              1,
+              "DESCRIBE",
+              2,
+              "SETUP",
+              3,
+              "PLAY",
+              4,
+              "PAUSE",
+              5,
+              "TEARDOWN",
+              6,
+              "GET_PARAMETER",
+              7,
+              "SET_PARAMETER",
+              8,
+              "RECORD",
+              9
+            ],
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "title": "RTSP Method",
+            "description": "Enum of common RTSP methods."
+          },
+          "headers": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "description": "RTSP headers."
+          },
+          "basicAuth": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "username": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Basic Auth",
+            "description": "Authentication messages common to both protocols."
+          },
+          "digestAuth": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "username": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "realm": {
+                "type": "string",
+                "description": "The realm provided by the server."
+              },
+              "nonce": {
+                "type": "string",
+                "description": "The nonce value provided by the server."
+              },
+              "opaque": {
+                "type": "string",
+                "description": "Optional opaque value."
+              },
+              "algorithm": {
+                "enum": [
+                  "UNSPECIFIED",
+                  0,
+                  "MD5",
+                  1,
+                  "MD5_SESS",
+                  2,
+                  "SHA_256",
+                  3,
+                  "SHA_256_SESS",
+                  4,
+                  "SHA_512_256",
+                  5,
+                  "SHA_512_256_SESS",
+                  6
+                ],
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ],
+                "title": "Digest Algorithm",
+                "description": "Enum for Digest Authentication algorithms."
+              },
+              "qop": {
+                "type": "string",
+                "description": "Quality of Protection (e.g., \"auth\" or \"auth-int\")."
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Digest Auth"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "basicAuth"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "digestAuth"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "required": [
+                  "basicAuth"
+                ]
+              },
+              {
+                "required": [
+                  "digestAuth"
+                ]
+              }
+            ]
+          }
+        ],
+        "title": "RTSP Request",
+        "description": "RTSP-specific request message."
+      }
+    "make87_messages.primitive.Int32":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Int 32"
+      }
+    "make87_messages.audio.FrameOpus":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "description": "Raw Opus-encoded frame(s).",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "pts": {
+            "type": "string",
+            "description": "Presentation timestamp (in units of time_base)."
+          },
+          "timeBase": {
+            "properties": {
+              "num": {
+                "type": "integer"
+              },
+              "den": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Fraction",
+            "description": "Time base (typically {1, 48000} for Opus)."
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Frame Opus"
+      }
+    "make87_messages.image.uncompressed.ImageYUV420":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "width": {
+            "type": "integer",
+            "description": "Width of the full image"
+          },
+          "height": {
+            "type": "integer",
+            "description": "Height of the full image"
+          },
+          "yPlane": {
+            "type": "string",
+            "description": "Luma, size = width * height",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "uPlane": {
+            "type": "string",
+            "description": "Chroma, size = (width / 2) * (height / 2)",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "vPlane": {
+            "type": "string",
+            "description": "Chroma, size = (width / 2) * (height / 2)",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Image YUV 420",
+        "description": "Planar 4:2:0 YUV — most common format for camera/video streams"
+      }
+    "make87_messages.detection.box.Boxes2DAxisAligned":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "boxes": {
+            "items": {
+              "properties": {
+                "header": {
+                  "properties": {
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "referenceId": {
+                      "type": "string"
+                    },
+                    "entityPath": {
+                      "type": "string",
+                      "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                    }
+                  },
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Header"
+                },
+                "geometry": {
+                  "properties": {
+                    "header": {
+                      "properties": {
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "referenceId": {
+                          "type": "string"
+                        },
+                        "entityPath": {
+                          "type": "string",
+                          "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                        }
+                      },
+                      "additionalProperties": true,
+                      "type": "object",
+                      "title": "Header"
+                    },
+                    "x": {
+                      "type": "number"
+                    },
+                    "y": {
+                      "type": "number"
+                    },
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
+                  },
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Box 2 D Axis Aligned"
+                },
+                "confidence": {
+                  "type": "number"
+                },
+                "classId": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": true,
+              "type": "object",
+              "title": "Box 2 D Axis Aligned"
+            },
+            "type": "array"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Boxes 2 D Axis Aligned"
+      }
+    "make87_messages.spatial.pose.Pose3D":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "translation": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "z": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Translation 3 D"
+          },
+          "rotation": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "z": {
+                "type": "number"
+              },
+              "w": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Quaternion"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Pose 3 D"
+      }
+    "make87_messages.image.uncompressed.ImageYUV444":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "yPlane": {
+            "type": "string",
+            "description": "size = width * height",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "uPlane": {
+            "type": "string",
+            "description": "size = width * height",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "vPlane": {
+            "type": "string",
+            "description": "size = width * height",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Image YUV 444",
+        "description": "Planar 4:4:4 YUV — full chroma resolution"
+      }
+    "make87_messages.audio.FramePcmS16le":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "description": "Interleaved PCM16 little-endian audio samples.",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "pts": {
+            "type": "string",
+            "description": "Presentation timestamp (in units of time_base)."
+          },
+          "timeBase": {
+            "properties": {
+              "num": {
+                "type": "integer"
+              },
+              "den": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Fraction",
+            "description": "Time base as a fraction (e.g., {1, 48000} for 48kHz audio clock)."
+          },
+          "channels": {
+            "type": "integer",
+            "description": "Channel count (e.g., 2 for stereo)."
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Frame Pcm S 16 Le"
+      }
+    "make87_messages.image.uncompressed.ImageRGB":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Image RGB"
+      }
+    "make87_messages.primitive.UInt64":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "U Int 64"
+      }
+    "make87_messages.image.compressed.ImagePNG":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Image PNG"
+      }
+    "make87_messages.image.uncompressed.ImageRGB888":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "data": {
+            "type": "string",
+            "description": "Raw RGB888 data in row-major order",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Image RGB 888"
+      }
+    "make87_messages.primitive.Fixed64":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Fixed 64"
+      }
+    "make87_messages.primitive.Int64":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Int 64"
+      }
+    "make87_messages.spatial.translation.Translation1D":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "x": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Translation 1 D"
+      }
+    "make87_messages.text.PlainText":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "body": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Plain Text",
+        "description": "text/plain"
+      }
+    "make87_messages.text.LogMessage":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "level": {
+            "enum": [
+              "DEBUG",
+              0,
+              "INFO",
+              1,
+              "WARNING",
+              2,
+              "ERROR",
+              3,
+              "CRITICAL",
+              4
+            ],
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "title": "Log Level",
+            "description": "The severity level of the log entry."
+          },
+          "message": {
+            "type": "string",
+            "description": "The actual log message content."
+          },
+          "source": {
+            "type": "string",
+            "description": "The source of the log message (e.g., service, module, application)."
+          },
+          "fileName": {
+            "type": "string",
+            "description": "The name of the file where the log was generated."
+          },
+          "lineNumber": {
+            "type": "integer",
+            "description": "The line number in the source file."
+          },
+          "processId": {
+            "type": "string",
+            "description": "The process ID."
+          },
+          "threadId": {
+            "type": "string",
+            "description": "The thread ID."
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Log Message"
+      }
+    "make87_messages.tensor.Matrix22":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "m00": {
+            "type": "number"
+          },
+          "m01": {
+            "type": "number"
+          },
+          "m10": {
+            "type": "number"
+          },
+          "m11": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Matrix 22"
+      }
+    "make87_messages.primitive.UInt32":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "U Int 32"
+      }
+    "make87_messages.detection.ontology.ModelOntology":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "classes": {
+            "items": {
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true,
+              "type": "object",
+              "title": "Class Entry"
+            },
+            "type": "array"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Model Ontology"
+      }
+    "make87_messages.video.FrameH264":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "description": "The H.264 encoded frame data. This is the raw NAL unit data in AnnexB format.",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "width": {
+            "type": "integer",
+            "description": "The width of the frame (in pixels)."
+          },
+          "height": {
+            "type": "integer",
+            "description": "The height of the frame (in pixels)."
+          },
+          "isKeyframe": {
+            "type": "boolean",
+            "description": "Marked if the frame is a keyframe."
+          },
+          "pts": {
+            "type": "string",
+            "description": "Presentation timestamp (PTS)."
+          },
+          "dts": {
+            "type": "string",
+            "description": "Decoding timestamp (DTS)."
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Frame duration in time units."
+          },
+          "timeBase": {
+            "properties": {
+              "num": {
+                "type": "integer"
+              },
+              "den": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Fraction"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Frame H 264"
+      }
+    "make87_messages.video.FrameMpegTsAny":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "h264": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "data": {
+                "type": "string",
+                "description": "The MPEG-TS frame containing H.264 encoded frame data. Please note this is not a 188-byte packet but all required packets to recreate a full frame.",
+                "format": "binary",
+                "binaryEncoding": "base64"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Frame Mpeg Ts H 264"
+          },
+          "h265": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "data": {
+                "type": "string",
+                "description": "The MPEG-TS frame containing H.265 encoded frame data. Please note this is not a 188-byte packet but all required packets to recreate a full frame.",
+                "format": "binary",
+                "binaryEncoding": "base64"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Frame Mpeg Ts H 265"
+          },
+          "av1": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "data": {
+                "type": "string",
+                "description": "The MPEG-TS frame containing AV1 encoded frame data. Please note this is not a 188-byte packet but all required packets to recreate a full frame.",
+                "format": "binary",
+                "binaryEncoding": "base64"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Frame Mpeg Ts AV 1"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "h264"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "h265"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "av1"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "required": [
+                  "h264"
+                ]
+              },
+              {
+                "required": [
+                  "h265"
+                ]
+              },
+              {
+                "required": [
+                  "av1"
+                ]
+              }
+            ]
+          }
+        ],
+        "title": "Frame Mpeg Ts Any"
+      }
+    "make87_messages.spatial.rotation.Quaternion":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "z": {
+            "type": "number"
+          },
+          "w": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Quaternion"
+      }
+    "make87_messages.tensor.Vector4":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "z": {
+            "type": "number"
+          },
+          "w": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Vector 4"
+      }
+    "make87_messages.video.FrameH265":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "description": "The H.265 encoded frame data. This is the raw NAL unit data in AnnexB format.",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "width": {
+            "type": "integer",
+            "description": "The width of the frame (in pixels)."
+          },
+          "height": {
+            "type": "integer",
+            "description": "The height of the frame (in pixels)."
+          },
+          "isKeyframe": {
+            "type": "boolean",
+            "description": "Marked if the frame is a keyframe."
+          },
+          "pts": {
+            "type": "string",
+            "description": "Presentation timestamp (PTS)."
+          },
+          "dts": {
+            "type": "string",
+            "description": "Decoding timestamp (DTS)."
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Frame duration in time units."
+          },
+          "timeBase": {
+            "properties": {
+              "num": {
+                "type": "integer"
+              },
+              "den": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Fraction"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Frame H 265"
+      }
+    "make87_messages.image.uncompressed.ImageRGBA8888":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "data": {
+            "type": "string",
+            "description": "Raw RGBA8888 data in row-major order",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Image RGBA 8888"
+      }
+    "make87_messages.primitive.Double":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Double"
+      }
+    "make87_messages.tensor.Matrix33":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "m00": {
+            "type": "number"
+          },
+          "m01": {
+            "type": "number"
+          },
+          "m02": {
+            "type": "number"
+          },
+          "m10": {
+            "type": "number"
+          },
+          "m11": {
+            "type": "number"
+          },
+          "m12": {
+            "type": "number"
+          },
+          "m20": {
+            "type": "number"
+          },
+          "m21": {
+            "type": "number"
+          },
+          "m22": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Matrix 33"
+      }
+    "make87_messages.transport.auth.DigestAuth":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "realm": {
+            "type": "string",
+            "description": "The realm provided by the server."
+          },
+          "nonce": {
+            "type": "string",
+            "description": "The nonce value provided by the server."
+          },
+          "opaque": {
+            "type": "string",
+            "description": "Optional opaque value."
+          },
+          "algorithm": {
+            "enum": [
+              "UNSPECIFIED",
+              0,
+              "MD5",
+              1,
+              "MD5_SESS",
+              2,
+              "SHA_256",
+              3,
+              "SHA_256_SESS",
+              4,
+              "SHA_512_256",
+              5,
+              "SHA_512_256_SESS",
+              6
+            ],
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "title": "Digest Algorithm",
+            "description": "Enum for Digest Authentication algorithms."
+          },
+          "qop": {
+            "type": "string",
+            "description": "Quality of Protection (e.g., \"auth\" or \"auth-int\")."
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Digest Auth"
+      }
+    "make87_messages.video.FrameAny":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "h264": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "data": {
+                "type": "string",
+                "description": "The H.264 encoded frame data. This is the raw NAL unit data in AnnexB format.",
+                "format": "binary",
+                "binaryEncoding": "base64"
+              },
+              "width": {
+                "type": "integer",
+                "description": "The width of the frame (in pixels)."
+              },
+              "height": {
+                "type": "integer",
+                "description": "The height of the frame (in pixels)."
+              },
+              "isKeyframe": {
+                "type": "boolean",
+                "description": "Marked if the frame is a keyframe."
+              },
+              "pts": {
+                "type": "string",
+                "description": "Presentation timestamp (PTS)."
+              },
+              "dts": {
+                "type": "string",
+                "description": "Decoding timestamp (DTS)."
+              },
+              "duration": {
+                "type": "integer",
+                "description": "Frame duration in time units."
+              },
+              "timeBase": {
+                "properties": {
+                  "num": {
+                    "type": "integer"
+                  },
+                  "den": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Fraction"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Frame H 264"
+          },
+          "h265": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "data": {
+                "type": "string",
+                "description": "The H.265 encoded frame data. This is the raw NAL unit data in AnnexB format.",
+                "format": "binary",
+                "binaryEncoding": "base64"
+              },
+              "width": {
+                "type": "integer",
+                "description": "The width of the frame (in pixels)."
+              },
+              "height": {
+                "type": "integer",
+                "description": "The height of the frame (in pixels)."
+              },
+              "isKeyframe": {
+                "type": "boolean",
+                "description": "Marked if the frame is a keyframe."
+              },
+              "pts": {
+                "type": "string",
+                "description": "Presentation timestamp (PTS)."
+              },
+              "dts": {
+                "type": "string",
+                "description": "Decoding timestamp (DTS)."
+              },
+              "duration": {
+                "type": "integer",
+                "description": "Frame duration in time units."
+              },
+              "timeBase": {
+                "properties": {
+                  "num": {
+                    "type": "integer"
+                  },
+                  "den": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Fraction"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Frame H 265"
+          },
+          "av1": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "data": {
+                "type": "string",
+                "description": "The AV1 encoded frame data.",
+                "format": "binary",
+                "binaryEncoding": "base64"
+              },
+              "width": {
+                "type": "integer",
+                "description": "The width of the frame (in pixels)."
+              },
+              "height": {
+                "type": "integer",
+                "description": "The height of the frame (in pixels)."
+              },
+              "isKeyframe": {
+                "type": "boolean",
+                "description": "Marked if the frame is a keyframe."
+              },
+              "pts": {
+                "type": "string",
+                "description": "Presentation timestamp (PTS)."
+              },
+              "dts": {
+                "type": "string",
+                "description": "Decoding timestamp (DTS)."
+              },
+              "duration": {
+                "type": "integer",
+                "description": "Frame duration in time units."
+              },
+              "timeBase": {
+                "properties": {
+                  "num": {
+                    "type": "integer"
+                  },
+                  "den": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Fraction"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Frame AV 1"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "h264"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "h265"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "av1"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "required": [
+                  "h264"
+                ]
+              },
+              {
+                "required": [
+                  "h265"
+                ]
+              },
+              {
+                "required": [
+                  "av1"
+                ]
+              }
+            ]
+          }
+        ],
+        "title": "Frame Any"
+      }
+    "make87_messages.video.FrameMpegTsH265":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "description": "The MPEG-TS frame containing H.265 encoded frame data. Please note this is not a 188-byte packet but all required packets to recreate a full frame.",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Frame Mpeg Ts H 265"
+      }
+    "make87_messages.primitive.Float":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Float"
+      }
+    "make87_messages.geometry.box.Box2DAxisAligned":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "width": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Box 2 D Axis Aligned"
+      }
+    "make87_messages.tensor.Vector3":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "z": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Vector 3"
+      }
+    "make87_messages.spatial.translation.Translation3D":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "z": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Translation 3 D"
+      }
+    "make87_messages.datetime.Range":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Range"
+      }
+    "make87_messages.core.Header":
+      {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "referenceId": {
+            "type": "string"
+          },
+          "entityPath": {
+            "type": "string",
+            "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Header"
+      }
+    "make87_messages.spatial.pose.Pose2D":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "translation": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Translation 2 D"
+          },
+          "rotation": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Pose 2 D"
+      }
+    "make87_messages.tensor.Matrix44":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "m00": {
+            "type": "number"
+          },
+          "m01": {
+            "type": "number"
+          },
+          "m02": {
+            "type": "number"
+          },
+          "m03": {
+            "type": "number"
+          },
+          "m10": {
+            "type": "number"
+          },
+          "m11": {
+            "type": "number"
+          },
+          "m12": {
+            "type": "number"
+          },
+          "m13": {
+            "type": "number"
+          },
+          "m20": {
+            "type": "number"
+          },
+          "m21": {
+            "type": "number"
+          },
+          "m22": {
+            "type": "number"
+          },
+          "m23": {
+            "type": "number"
+          },
+          "m30": {
+            "type": "number"
+          },
+          "m31": {
+            "type": "number"
+          },
+          "m32": {
+            "type": "number"
+          },
+          "m33": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Matrix 44"
+      }
+    "make87_messages.image.compressed.ImageJPEGWithString":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Image JPEG With String"
+      }
+    "make87_messages.file.RelativePathFile":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "path": {
+            "type": "string",
+            "description": "A relative path to the file"
+          },
+          "data": {
+            "type": "string",
+            "description": "The data of the file",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Relative Path File"
+      }
+    "make87_messages.audio.FrameAny":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "pcmS16le": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "data": {
+                "type": "string",
+                "description": "Interleaved PCM16 little-endian audio samples.",
+                "format": "binary",
+                "binaryEncoding": "base64"
+              },
+              "pts": {
+                "type": "string",
+                "description": "Presentation timestamp (in units of time_base)."
+              },
+              "timeBase": {
+                "properties": {
+                  "num": {
+                    "type": "integer"
+                  },
+                  "den": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Fraction",
+                "description": "Time base as a fraction (e.g., {1, 48000} for 48kHz audio clock)."
+              },
+              "channels": {
+                "type": "integer",
+                "description": "Channel count (e.g., 2 for stereo)."
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Frame Pcm S 16 Le"
+          },
+          "aac": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "data": {
+                "type": "string",
+                "description": "Raw AAC-encoded data (assumed to include ADTS headers).",
+                "format": "binary",
+                "binaryEncoding": "base64"
+              },
+              "pts": {
+                "type": "string",
+                "description": "Presentation timestamp (in units of time_base)."
+              },
+              "timeBase": {
+                "properties": {
+                  "num": {
+                    "type": "integer"
+                  },
+                  "den": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Fraction",
+                "description": "Time base (e.g., {1, 90000} for 90kHz media clock)."
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Frame Aac"
+          },
+          "opus": {
+            "properties": {
+              "header": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "referenceId": {
+                    "type": "string"
+                  },
+                  "entityPath": {
+                    "type": "string",
+                    "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Header"
+              },
+              "data": {
+                "type": "string",
+                "description": "Raw Opus-encoded frame(s).",
+                "format": "binary",
+                "binaryEncoding": "base64"
+              },
+              "pts": {
+                "type": "string",
+                "description": "Presentation timestamp (in units of time_base)."
+              },
+              "timeBase": {
+                "properties": {
+                  "num": {
+                    "type": "integer"
+                  },
+                  "den": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Fraction",
+                "description": "Time base (typically {1, 48000} for Opus)."
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Frame Opus"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "pcmS16le"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "aac"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "opus"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "required": [
+                  "pcmS16le"
+                ]
+              },
+              {
+                "required": [
+                  "aac"
+                ]
+              },
+              {
+                "required": [
+                  "opus"
+                ]
+              }
+            ]
+          }
+        ],
+        "title": "Frame Any"
+      }
+    "make87_messages.file.AbsolutePathFile":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "path": {
+            "type": "string",
+            "description": "An absolute path to the file"
+          },
+          "data": {
+            "type": "string",
+            "description": "The data of the file",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Absolute Path File"
+      }
+    "make87_messages.tensor.Vector2":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Vector 2"
+      }
+    "make87_messages.transport.auth.BasicAuth":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Basic Auth",
+        "description": "Authentication messages common to both protocols."
+      }
+    "make87_messages.image.compressed.ImageJPEG":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "data": {
+            "type": "string",
+            "format": "binary",
+            "binaryEncoding": "base64"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Image JPEG"
+      }
+    "make87_messages.primitive.Fixed32":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Fixed 32"
+      }
+    "make87_messages.primitive.SFixed32":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "S Fixed 32"
+      }
+    "make87_messages.datetime.TimeStamp":
+      {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Time Stamp"
+      }
+    "make87_messages.geometry.box.Boxes2DAxisAligned":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "boxes": {
+            "items": {
+              "properties": {
+                "header": {
+                  "properties": {
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "referenceId": {
+                      "type": "string"
+                    },
+                    "entityPath": {
+                      "type": "string",
+                      "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+                    }
+                  },
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Header"
+                },
+                "x": {
+                  "type": "number"
+                },
+                "y": {
+                  "type": "number"
+                },
+                "width": {
+                  "type": "number"
+                },
+                "height": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": true,
+              "type": "object",
+              "title": "Box 2 D Axis Aligned"
+            },
+            "type": "array"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Boxes 2 D Axis Aligned"
+      }
+    "make87_messages.transport.auth.BearerToken":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "Bearer Token",
+        "description": "Bearer token authentication for HTTP."
+      }
+    "make87_messages.primitive.String":
+      {
+        "properties": {
+          "header": {
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "referenceId": {
+                "type": "string"
+              },
+              "entityPath": {
+                "type": "string",
+                "description": "Slash-based entity path, e.g., \"cameras/1/intrinsic\""
+              }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Header"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "title": "String"
+      }
