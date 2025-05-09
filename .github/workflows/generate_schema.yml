@@ -41,15 +41,6 @@ jobs:
             echo "PROTO_DIR=${{ steps.current.outputs.name }}" >> $GITHUB_ENV
           fi
 
-      - name: List checked-out directories
-        run: |
-          echo "Contents of repo/:"
-          ls -la repo
-          if [ -d make87_messages ]; then
-            echo "Contents of make87_messages/:"
-            ls -la make87_messages
-          fi
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -126,12 +117,10 @@ jobs:
 
       - name: Combine dereferenced files into MAKE87.schemas.yml
         run: |
-          # extract just the repo name ("owner/repo" → "repo")
-          REPO_NAME="${GITHUB_REPOSITORY##*/}"
           cat > MAKE87.schemas.yml <<EOF
           openapi: 3.1.0
           info:
-            title: ${REPO_NAME}
+            title: ${PROTO_DIR}
             version: 0.0.0
           components:
             schemas:
