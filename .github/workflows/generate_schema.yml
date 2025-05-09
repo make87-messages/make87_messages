@@ -111,7 +111,7 @@ jobs:
           find out_deref -type f -name '*.json' | while read -r file; do
             base_name=$(basename "$file" .json)
             echo "    \"$base_name\":" >> MAKE87.schemas.yml
-            yq -P -o=yaml -I=json "$file" | sed 's/^/      /' >> MAKE87.schemas.yml
+            yq -P -o=yaml "$file" | sed 's/^/      /' >> MAKE87.schemas.yml
           done
 
       - name: Commit schema file to branch (optional)
