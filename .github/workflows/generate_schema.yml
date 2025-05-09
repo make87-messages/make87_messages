@@ -86,11 +86,8 @@ jobs:
               const input = fs.readFileSync(file, 'utf8');
               const parsed = JSON.parse(input);
               const dereferenced = deref(parsed, { clone: true });
-              const outPath = process.env.DEREF_OUT_PREFIX
-                ? process.env.DEREF_OUT_PREFIX + file
-                : file;
-              fs.writeFileSync(outPath, JSON.stringify(dereferenced, null, 2));
-              console.log(`✅ Dereferenced ${file} → ${outPath}`);
+              fs.writeFileSync(file, JSON.stringify(dereferenced, null, 2));
+              console.log(`✅ Dereferenced ${file}`);
             } catch (err) {
               console.error(`Failed to dereference ${file}:`, err.message);
               process.exit(1);
