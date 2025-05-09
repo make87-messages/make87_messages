@@ -101,10 +101,12 @@ jobs:
 
       - name: Combine dereferenced files into MAKE87.schemas.yml
         run: |
+          # extract just the repo name ("owner/repo" → "repo")
+          REPO_NAME="${GITHUB_REPOSITORY##*/}"
           echo "openapi: 3.1.0" > MAKE87.schemas.yml
           echo "info:" >> MAKE87.schemas.yml
-          echo "  title: Combined Make87 Schemas" >> MAKE87.schemas.yml
-          echo "  version: 1.0.0" >> MAKE87.schemas.yml
+          echo "  title: ${REPO_NAME}" >> MAKE87.schemas.yml
+          echo "  version: 0.0.0" >> MAKE87.schemas.yml
           echo "components:" >> MAKE87.schemas.yml
           echo "  schemas:" >> MAKE87.schemas.yml
 
