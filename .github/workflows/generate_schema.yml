@@ -5,26 +5,46 @@ on:
     branches: [ "**" ]
   pull_request:
   workflow_dispatch:
+
 permissions:
   contents: write
+
+env:
+  DEPENDENCY_REPO: make87-messages/make87_messages
+
 jobs:
   generate-manifest:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout current repository
         uses: actions/checkout@v4
         with:
+          path: repo
+
+      - name: Checkout make87_messages repository
+        if: ${{ github.repository != env.DEPENDENCY_REPO }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.DEPENDENCY_REPO }}
           path: make87_messages
 
-      - name: List directory
+      - name: Determine where to find .proto files
         run: |
-          echo "Current directory:"
-          pwd
-          echo "Contents of the current directory:"
-          ls -la
-          echo "Contents of the make87_messages directory:"
-          ls -la make87_messages
+          if [ "${GITHUB_REPOSITORY}" = "${DEPENDENCY_REPO}" ]; then
+            echo "PROTO_DIR=repo" >> $GITHUB_ENV
+          else
+            echo "PROTO_DIR=make87_messages" >> $GITHUB_ENV
+          fi
+
+      - name: List checked-out directories
+        run: |
+          echo "Contents of repo/:"
+          ls -la repo
+          if [ -d make87_messages ]; then
+            echo "Contents of make87_messages/:"
+            ls -la make87_messages
+          fi
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -46,7 +66,8 @@ jobs:
 
       - name: Install protoc
         run: |
-          sudo apt-get update && sudo apt-get install -y protobuf-compiler
+          sudo apt-get update
+          sudo apt-get install -y protobuf-compiler
 
       - name: Install yq
         run: |
@@ -77,7 +98,7 @@ jobs:
       - name: Generate JSON schemas from proto
         run: |
           mkdir -p out
-          find make87_messages -name '*.proto' > proto_files.txt
+          find $PROTO_DIR -name '*.proto' > proto_files.txt
           protoc \
             --plugin=$HOME/go/bin/protoc-gen-jsonschema \
             --jsonschema_out=./out \
@@ -95,7 +116,7 @@ jobs:
             schema_name="${file#out/}"
             schema_name="${schema_name%.json}"
             schema_name="${schema_name//\//.}"
-            cat "$file" | node ./deref_each.js > "out_deref/${schema_name}.json"
+            node ./deref_each.js < "$file" > "out_deref/${schema_name}.json"
             echo "✅ Dereferenced $file → out_deref/${schema_name}.json"
           done
 
@@ -103,13 +124,14 @@ jobs:
         run: |
           # extract just the repo name ("owner/repo" → "repo")
           REPO_NAME="${GITHUB_REPOSITORY##*/}"
-          echo "openapi: 3.1.0" > MAKE87.schemas.yml
-          echo "info:" >> MAKE87.schemas.yml
-          echo "  title: ${REPO_NAME}" >> MAKE87.schemas.yml
-          echo "  version: 0.0.0" >> MAKE87.schemas.yml
-          echo "components:" >> MAKE87.schemas.yml
-          echo "  schemas:" >> MAKE87.schemas.yml
-
+          cat > MAKE87.schemas.yml <<EOF
+          openapi: 3.1.0
+          info:
+            title: ${REPO_NAME}
+            version: 0.0.0
+          components:
+            schemas:
+          EOF
           find out_deref -type f -name '*.json' | while read -r file; do
             base_name=$(basename "$file" .json)
             echo "    \"$base_name\":" >> MAKE87.schemas.yml
@@ -119,8 +141,8 @@ jobs:
       - name: Commit schema file to branch (optional)
         if: github.ref_type == 'branch'
         run: |
-          cp MAKE87.schemas.yml make87_messages/MAKE87.schemas.yml
-          cd make87_messages
+          cp MAKE87.schemas.yml $PROTO_DIR/MAKE87.schemas.yml
+          cd $PROTO_DIR
           git config user.name "make87 bot"
           git config user.email "bot@make87.com"
           git add MAKE87.schemas.yml
