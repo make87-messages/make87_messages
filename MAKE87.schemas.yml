@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Combined Make87 Schemas
-  version: 1.0.0
+  title: make87_messages
+  version: 0.0.0
 components:
   schemas:
     "make87_messages.detection.box.Box2DAxisAligned":
