@@ -122,5 +122,5 @@ jobs:
           git config user.name "make87 bot"
           git config user.email "bot@make87.com"
           git add MAKE87.schemas.yml
-          git commit -m "chore: regenerate MAKE87.schemas.yml [skip ci]" || echo "No changes to commit"
+          git commit -m "chore: regenerate MAKE87.schemas.yml" || echo "No changes to commit"
           git push origin HEAD
