@@ -16,24 +16,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Get current repo name
+        id: current
+        run: |
+          echo "name=${GITHUB_REPOSITORY##*/}" >> $GITHUB_OUTPUT
+
       - name: Checkout current repository
         uses: actions/checkout@v4
         with:
-          path: repo
+          path: ${{ steps.current.outputs.name }}
 
-      - name: Checkout make87_messages repository
+      - name: Checkout messages repo if different
         if: ${{ github.repository != env.DEPENDENCY_REPO }}
         uses: actions/checkout@v4
         with:
           repository: ${{ env.DEPENDENCY_REPO }}
           path: make87_messages
 
-      - name: Determine where to find .proto files
+      - name: Determine PROTO_DIR
         run: |
-          if [ "${GITHUB_REPOSITORY}" = "${DEPENDENCY_REPO}" ]; then
-            echo "PROTO_DIR=repo" >> $GITHUB_ENV
-          else
+          if [ "${GITHUB_REPOSITORY}" != "${DEPENDENCY_REPO}" ]; then
             echo "PROTO_DIR=make87_messages" >> $GITHUB_ENV
+          else
+            echo "PROTO_DIR=${{ steps.current.outputs.name }}" >> $GITHUB_ENV
           fi
 
       - name: List checked-out directories
