@@ -32,9 +32,10 @@ jobs:
           go install github.com/chrusty/protoc-gen-jsonschema/cmd/protoc-gen-jsonschema@latest
           echo "$HOME/go/bin" >> $GITHUB_PATH
 
-      - name: Install protoc
-        run: |
-          sudo apt-get update && sudo apt-get install -y protobuf-compiler
+      - name: Setup protoc
+        uses: arduino/setup-protoc@v3
+        with:
+          version: 22.x
 
       - name: Install yq
         run: |
@@ -65,7 +66,7 @@ jobs:
       - name: Generate JSON schemas from proto
         run: |
           mkdir -p out
-          find make87_messages -name '*.proto' > proto_files.txt
+          find . -name '*.proto' > proto_files.txt
           protoc \
             --plugin=$HOME/go/bin/protoc-gen-jsonschema \
             --jsonschema_out=./out \
