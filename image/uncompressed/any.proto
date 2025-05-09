@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package make87_messages.image.uncompressed;
+
+import "make87_messages/core/header.proto";
+import "make87_messages/image/uncompressed/image_rgb888.proto";
+import "make87_messages/image/uncompressed/image_rgba8888.proto";
+
+
+message ImageRGBAny {
+    // The timestamp of the log entry.
+    make87_messages.core.Header header = 1;
+
+    // One of the following:
+    // - The H.264 encoded frame data.
+    // - The H.265 encoded frame data.
+    // - The AV1 encoded frame data.
+    oneof data {
+        ImageRGB888 rgb888 = 2;
+        ImageRGBA8888 rgba8888 = 3;
+    }
+}
