@@ -1,0 +1,112 @@
+name: Generate OpenAPI Schema Manifest
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  generate-manifest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install deref dependency
+        run: npm install json-schema-deref-sync
+
+      - name: Set up Go and install protoc-gen-jsonschema
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Install protoc-gen-jsonschema
+        run: |
+          go install github.com/chrusty/protoc-gen-jsonschema/cmd/protoc-gen-jsonschema@latest
+          echo "$HOME/go/bin" >> $GITHUB_PATH
+
+      - name: Install protoc
+        run: |
+          sudo apt-get update && sudo apt-get install -y protobuf-compiler
+
+      - name: Install yq
+        run: |
+          wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+          chmod +x /usr/local/bin/yq
+
+      - name: Write deref_each.js helper
+        run: |
+          cat > deref_each.js <<'EOF'
+          #!/usr/bin/env node
+          const deref = require('json-schema-deref-sync');
+          let input = '';
+          process.stdin.setEncoding('utf8');
+          process.stdin.on('data', chunk => { input += chunk; });
+          process.stdin.on('end', () => {
+            try {
+              const parsed = JSON.parse(input);
+              const dereferenced = deref(parsed, { clone: true });
+              process.stdout.write(JSON.stringify(dereferenced, null, 2));
+            } catch (err) {
+              console.error('Failed to dereference:', err.message);
+              process.exit(1);
+            }
+          });
+          EOF
+          chmod +x deref_each.js
+
+      - name: Generate JSON schemas from proto
+        run: |
+          mkdir -p out
+          find make87_messages -name '*.proto' > proto_files.txt
+          protoc \
+            --plugin=$HOME/go/bin/protoc-gen-jsonschema \
+            --jsonschema_out=./out \
+            --jsonschema_opt=enforce_oneof \
+            --jsonschema_opt=json_fieldnames \
+            --jsonschema_opt=prefix_schema_files_with_package \
+            -I . \
+            --proto_path=. \
+            $(cat proto_files.txt)
+
+      - name: Dereference each JSON schema file
+        run: |
+          mkdir -p out_deref
+          find out -name '*.json' | while read -r file; do
+            schema_name="${file#out/}"
+            schema_name="${schema_name%.json}"
+            schema_name="${schema_name//\//.}"
+            cat "$file" | node ./deref_each.js > "out_deref/${schema_name}.json"
+            echo "✅ Dereferenced $file → out_deref/${schema_name}.json"
+          done
+
+      - name: Combine dereferenced files into MAKE87.schemas.yml
+        run: |
+          echo "openapi: 3.1.0" > MAKE87.schemas.yml
+          echo "info:" >> MAKE87.schemas.yml
+          echo "  title: Combined Make87 Schemas" >> MAKE87.schemas.yml
+          echo "  version: 1.0.0" >> MAKE87.schemas.yml
+          echo "components:" >> MAKE87.schemas.yml
+          echo "  schemas:" >> MAKE87.schemas.yml
+
+          find out_deref -type f -name '*.json' | while read -r file; do
+            base_name=$(basename "$file" .json)
+            echo "    \"$base_name\":" >> MAKE87.schemas.yml
+            yq -P "$file" | sed 's/^/      /' >> MAKE87.schemas.yml
+          done
+
+      - name: Commit schema file to branch (optional)
+        if: github.ref_type == 'branch'
+        run: |
+          git config user.name "make87 bot"
+          git config user.email "bot@make87.com"
+          git add MAKE87.schemas.yml
+          git commit -m "chore: regenerate MAKE87.schemas.yml [skip ci]" || echo "No changes to commit"
+          git push origin HEAD
