@@ -58,7 +58,7 @@ jobs:
 
       - name: Download proto_parser binary
         run: |
-          wget https://github.com/make87/proto_parser/releases/latest/download/proto_parser_linux_amd64 -O proto_parser
+          wget https://make87-files.nyc3.digitaloceanspaces.com/releases/latest/proto_parser-x86_64-unknown-linux-gnu -O proto_parser
           chmod +x proto_parser
 
       - name: Generate MAKE87.schemas.yml from descriptor.pb
