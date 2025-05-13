@@ -5,18 +5,54 @@ package make87_messages.image.uncompressed;
 import "make87_messages/core/header.proto";
 import "make87_messages/image/uncompressed/image_rgb888.proto";
 import "make87_messages/image/uncompressed/image_rgba8888.proto";
+import "make87_messages/image/uncompressed/image_yuv420.proto";
+import "make87_messages/image/uncompressed/image_yuv422.proto";
+import "make87_messages/image/uncompressed/image_yuv444.proto";
 
 
 message ImageRGBAny {
-    // The timestamp of the log entry.
-    make87_messages.core.Header header = 1;
+  // The timestamp of the log entry.
+  make87_messages.core.Header header = 1;
 
-    // One of the following:
-    // - The H.264 encoded frame data.
-    // - The H.265 encoded frame data.
-    // - The AV1 encoded frame data.
-    oneof data {
-        ImageRGB888 rgb888 = 2;
-        ImageRGBA8888 rgba8888 = 3;
-    }
+  // One of the following:
+  // - The RGB888 encoded frame data.
+  // - The RGBA8888 encoded frame data.
+  oneof data {
+    ImageRGB888 rgb888 = 2;
+    ImageRGBA8888 rgba8888 = 3;
+  }
+}
+
+message ImageYUVAny {
+  // The timestamp of the log entry.
+  make87_messages.core.Header header = 1;
+
+  // One of the following:
+  // - The YUV420 encoded frame data.
+  // - The YUV422 encoded frame data.
+  // - The YUV444 encoded frame data.
+  oneof data {
+    ImageYUV420 yuv420 = 2;
+    ImageYUV422 yuv422 = 3;
+    ImageYUV444 yuv444 = 4;
+  }
+}
+
+message ImageRawAny {
+  // The timestamp of the log entry.
+  make87_messages.core.Header header = 1;
+
+  // One of the following:
+  // - The RGB888 encoded frame data.
+  // - The RGBA8888 encoded frame data.
+  // - The YUV420 encoded frame data.
+  // - The YUV422 encoded frame data.
+  // - The YUV444 encoded frame data.
+  oneof data {
+    ImageRGB888 rgb888 = 2;
+    ImageRGBA8888 rgba8888 = 3;
+    ImageYUV420 yuv420 = 4;
+    ImageYUV422 yuv422 = 5;
+    ImageYUV444 yuv444 = 6;
+  }
 }
