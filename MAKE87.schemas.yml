@@ -601,6 +601,40 @@ messages:
   - name: rgba8888
     type: make87_messages.image.uncompressed.ImageRGBA8888
     index: 3
+- name: make87_messages.image.uncompressed.ImageYUVAny
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: yuv420
+    type: make87_messages.image.uncompressed.ImageYUV420
+    index: 2
+  - name: yuv422
+    type: make87_messages.image.uncompressed.ImageYUV422
+    index: 3
+  - name: yuv444
+    type: make87_messages.image.uncompressed.ImageYUV444
+    index: 4
+- name: make87_messages.image.uncompressed.ImageRawAny
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: rgb888
+    type: make87_messages.image.uncompressed.ImageRGB888
+    index: 2
+  - name: rgba8888
+    type: make87_messages.image.uncompressed.ImageRGBA8888
+    index: 3
+  - name: yuv420
+    type: make87_messages.image.uncompressed.ImageYUV420
+    index: 4
+  - name: yuv422
+    type: make87_messages.image.uncompressed.ImageYUV422
+    index: 5
+  - name: yuv444
+    type: make87_messages.image.uncompressed.ImageYUV444
+    index: 6
 - name: make87_messages.image.compressed.ImageJPEGWithString
   fields:
   - name: header
