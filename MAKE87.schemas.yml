@@ -513,15 +513,9 @@ messages:
   - name: height
     type: uint32
     index: 3
-  - name: y_plane
+  - name: data
     type: bytes
     index: 4
-  - name: u_plane
-    type: bytes
-    index: 5
-  - name: v_plane
-    type: bytes
-    index: 6
 - name: make87_messages.image.uncompressed.ImageYUV444
   fields:
   - name: header
@@ -533,15 +527,9 @@ messages:
   - name: height
     type: uint32
     index: 3
-  - name: y_plane
+  - name: data
     type: bytes
     index: 4
-  - name: u_plane
-    type: bytes
-    index: 5
-  - name: v_plane
-    type: bytes
-    index: 6
 - name: make87_messages.image.uncompressed.ImageRGB888
   fields:
   - name: header
@@ -567,15 +555,9 @@ messages:
   - name: height
     type: uint32
     index: 3
-  - name: y_plane
+  - name: data
     type: bytes
     index: 4
-  - name: u_plane
-    type: bytes
-    index: 5
-  - name: v_plane
-    type: bytes
-    index: 6
 - name: make87_messages.image.uncompressed.ImageRGBA8888
   fields:
   - name: header
