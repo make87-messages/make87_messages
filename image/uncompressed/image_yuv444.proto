@@ -6,11 +6,9 @@ import "make87_messages/core/header.proto";
 
 // Planar 4:4:4 YUV — full chroma resolution
 message ImageYUV444 {
-    make87_messages.core.Header header = 1;
-    uint32 width = 2;
-    uint32 height = 3;
-
-    bytes y_plane = 4; // size = width * height
-    bytes u_plane = 5; // size = width * height
-    bytes v_plane = 6; // size = width * height
+  make87_messages.core.Header header = 1;
+  
+  uint32 width = 2;
+  uint32 height = 3;
+  bytes data = 4; // YUV444 data, interleaved
 }

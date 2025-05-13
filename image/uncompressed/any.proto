@@ -17,7 +17,7 @@ message ImageRGBAny {
   // One of the following:
   // - The RGB888 encoded frame data.
   // - The RGBA8888 encoded frame data.
-  oneof data {
+  oneof image {
     ImageRGB888 rgb888 = 2;
     ImageRGBA8888 rgba8888 = 3;
   }
@@ -31,7 +31,7 @@ message ImageYUVAny {
   // - The YUV420 encoded frame data.
   // - The YUV422 encoded frame data.
   // - The YUV444 encoded frame data.
-  oneof data {
+  oneof image {
     ImageYUV420 yuv420 = 2;
     ImageYUV422 yuv422 = 3;
     ImageYUV444 yuv444 = 4;
@@ -48,7 +48,7 @@ message ImageRawAny {
   // - The YUV420 encoded frame data.
   // - The YUV422 encoded frame data.
   // - The YUV444 encoded frame data.
-  oneof data {
+  oneof image {
     ImageRGB888 rgb888 = 2;
     ImageRGBA8888 rgba8888 = 3;
     ImageYUV420 yuv420 = 4;

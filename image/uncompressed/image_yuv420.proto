@@ -6,11 +6,9 @@ import "make87_messages/core/header.proto";
 
 // Planar 4:2:0 YUV — most common format for camera/video streams
 message ImageYUV420 {
-    make87_messages.core.Header header = 1;
-    uint32 width = 2;  // Width of the full image
-    uint32 height = 3; // Height of the full image
-
-    bytes y_plane = 4; // Luma, size = width * height
-    bytes u_plane = 5; // Chroma, size = (width / 2) * (height / 2)
-    bytes v_plane = 6; // Chroma, size = (width / 2) * (height / 2)
+  make87_messages.core.Header header = 1;
+  
+  uint32 width = 2;  // Width of the full image
+  uint32 height = 3; // Height of the full image
+  bytes data = 4; // YUV420 data, interleaved
 }
