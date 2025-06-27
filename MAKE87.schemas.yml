@@ -19,345 +19,50 @@ messages:
   - name: entity_path
     type: string
     index: 3
-- name: make87_messages.text.PlainText
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: body
-    type: string
-    index: 2
-- name: make87_messages.text.LogMessage
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: level
-    type: make87_messages.text.LogMessage.LogLevel
-    index: 2
-  - name: message
-    type: string
-    index: 3
-  - name: source
-    type: string
-    index: 4
-  - name: file_name
-    type: string
-    index: 5
-  - name: line_number
-    type: int32
-    index: 6
-  - name: process_id
-    type: int64
-    index: 7
-  - name: thread_id
-    type: int64
-    index: 8
-- name: make87_messages.detection.ontology.ModelOntology
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: classes
-    type: make87_messages.detection.ontology.ModelOntology.ClassEntry
-    index: 2
-- name: make87_messages.detection.ontology.ModelOntology.ClassEntry
-  fields:
-  - name: id
-    type: int32
-    index: 1
-  - name: label
-    type: string
-    index: 2
-- name: make87_messages.geometry.box.Box2D
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: x
-    type: float
-    index: 2
-  - name: y
-    type: float
-    index: 3
-  - name: width
-    type: float
-    index: 4
-  - name: height
-    type: float
-    index: 5
-  - name: rotation
-    type: float
-    index: 6
-- name: make87_messages.geometry.box.Box2DAxisAligned
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: x
-    type: float
-    index: 2
-  - name: y
-    type: float
-    index: 3
-  - name: width
-    type: float
-    index: 4
-  - name: height
-    type: float
-    index: 5
-- name: make87_messages.detection.box.Box2D
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: geometry
-    type: make87_messages.geometry.box.Box2D
-    index: 2
-  - name: confidence
-    type: float
-    index: 3
-  - name: class_id
-    type: int32
-    index: 4
-- name: make87_messages.detection.box.Box2DAxisAligned
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: geometry
-    type: make87_messages.geometry.box.Box2DAxisAligned
-    index: 2
-  - name: confidence
-    type: float
-    index: 3
-  - name: class_id
-    type: int32
-    index: 4
-- name: make87_messages.detection.box.Boxes2D
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: boxes
-    type: make87_messages.detection.box.Box2D
-    index: 2
-- name: make87_messages.detection.box.Boxes2DAxisAligned
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: boxes
-    type: make87_messages.detection.box.Box2DAxisAligned
-    index: 2
 - name: make87_messages.core.Empty
   fields:
   - name: header
     type: make87_messages.core.Header
     index: 1
-- name: make87_messages.primitive.SInt64
+- name: make87_messages.file.RelativePathFile
   fields:
   - name: header
     type: make87_messages.core.Header
     index: 1
-  - name: value
-    type: sint64
-    index: 2
-- name: make87_messages.primitive.Float
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: float
-    index: 2
-- name: make87_messages.primitive.String
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
+  - name: path
     type: string
     index: 2
-- name: make87_messages.primitive.Bool
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: bool
-    index: 2
-- name: make87_messages.primitive.Fixed64
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: fixed64
-    index: 2
-- name: make87_messages.primitive.Fixed32
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: fixed32
-    index: 2
-- name: make87_messages.primitive.UInt32
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: uint32
-    index: 2
-- name: make87_messages.primitive.Int64
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: int64
-    index: 2
-- name: make87_messages.primitive.UInt64
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: uint64
-    index: 2
-- name: make87_messages.primitive.SFixed32
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: sfixed32
-    index: 2
-- name: make87_messages.primitive.Double
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: double
-    index: 2
-- name: make87_messages.primitive.SFixed64
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: sfixed64
-    index: 2
-- name: make87_messages.primitive.Bytes
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: bytes
-    index: 2
-- name: make87_messages.primitive.Int32
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: int32
-    index: 2
-- name: make87_messages.primitive.SInt32
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: value
-    type: sint32
-    index: 2
-- name: make87_messages.audio.FrameAac
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
   - name: data
     type: bytes
-    index: 2
-  - name: pts
-    type: int64
     index: 3
-  - name: time_base
-    type: make87_messages.audio.FrameAac.Fraction
-    index: 4
-- name: make87_messages.audio.FrameAac.Fraction
-  fields:
-  - name: num
-    type: uint32
-    index: 1
-  - name: den
-    type: uint32
-    index: 2
-- name: make87_messages.audio.FrameOpus
+- name: make87_messages.file.AbsolutePathFile
   fields:
   - name: header
     type: make87_messages.core.Header
     index: 1
+  - name: path
+    type: string
+    index: 2
   - name: data
     type: bytes
-    index: 2
-  - name: pts
-    type: int64
     index: 3
-  - name: time_base
-    type: make87_messages.audio.FrameOpus.Fraction
-    index: 4
-- name: make87_messages.audio.FrameOpus.Fraction
-  fields:
-  - name: num
-    type: uint32
-    index: 1
-  - name: den
-    type: uint32
-    index: 2
-- name: make87_messages.audio.FramePcmS16le
+- name: make87_messages.tensor.Vector4
   fields:
   - name: header
     type: make87_messages.core.Header
     index: 1
-  - name: data
-    type: bytes
+  - name: x
+    type: float
     index: 2
-  - name: pts
-    type: int64
+  - name: y
+    type: float
     index: 3
-  - name: time_base
-    type: make87_messages.audio.FramePcmS16le.Fraction
+  - name: z
+    type: float
     index: 4
-  - name: channels
-    type: uint32
+  - name: w
+    type: float
     index: 5
-- name: make87_messages.audio.FramePcmS16le.Fraction
-  fields:
-  - name: num
-    type: uint32
-    index: 1
-  - name: den
-    type: uint32
-    index: 2
-- name: make87_messages.audio.FrameAny
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: pcm_s16le
-    type: make87_messages.audio.FramePcmS16le
-    index: 2
-  - name: aac
-    type: make87_messages.audio.FrameAac
-    index: 3
-  - name: opus
-    type: make87_messages.audio.FrameOpus
-    index: 4
 - name: make87_messages.tensor.Matrix22
   fields:
   - name: header
@@ -386,52 +91,6 @@ messages:
   - name: y
     type: float
     index: 3
-- name: make87_messages.tensor.Matrix33
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: m00
-    type: float
-    index: 2
-  - name: m01
-    type: float
-    index: 3
-  - name: m02
-    type: float
-    index: 4
-  - name: m10
-    type: float
-    index: 5
-  - name: m11
-    type: float
-    index: 6
-  - name: m12
-    type: float
-    index: 7
-  - name: m20
-    type: float
-    index: 8
-  - name: m21
-    type: float
-    index: 9
-  - name: m22
-    type: float
-    index: 10
-- name: make87_messages.tensor.Vector3
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: x
-    type: float
-    index: 2
-  - name: y
-    type: float
-    index: 3
-  - name: z
-    type: float
-    index: 4
 - name: make87_messages.tensor.Matrix44
   fields:
   - name: header
@@ -485,7 +144,39 @@ messages:
   - name: m33
     type: float
     index: 17
-- name: make87_messages.tensor.Vector4
+- name: make87_messages.tensor.Matrix33
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: m00
+    type: float
+    index: 2
+  - name: m01
+    type: float
+    index: 3
+  - name: m02
+    type: float
+    index: 4
+  - name: m10
+    type: float
+    index: 5
+  - name: m11
+    type: float
+    index: 6
+  - name: m12
+    type: float
+    index: 7
+  - name: m20
+    type: float
+    index: 8
+  - name: m21
+    type: float
+    index: 9
+  - name: m22
+    type: float
+    index: 10
+- name: make87_messages.tensor.Vector3
   fields:
   - name: header
     type: make87_messages.core.Header
@@ -499,136 +190,180 @@ messages:
   - name: z
     type: float
     index: 4
-  - name: w
+- name: make87_messages.primitive.SFixed64
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: sfixed64
+    index: 2
+- name: make87_messages.primitive.Fixed64
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: fixed64
+    index: 2
+- name: make87_messages.primitive.Fixed32
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: fixed32
+    index: 2
+- name: make87_messages.primitive.SFixed32
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: sfixed32
+    index: 2
+- name: make87_messages.primitive.SInt32
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: sint32
+    index: 2
+- name: make87_messages.primitive.Int64
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: int64
+    index: 2
+- name: make87_messages.primitive.UInt32
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: uint32
+    index: 2
+- name: make87_messages.primitive.Double
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: double
+    index: 2
+- name: make87_messages.primitive.SInt64
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: sint64
+    index: 2
+- name: make87_messages.primitive.UInt64
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: uint64
+    index: 2
+- name: make87_messages.primitive.String
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: string
+    index: 2
+- name: make87_messages.primitive.Bool
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: bool
+    index: 2
+- name: make87_messages.primitive.Bytes
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: bytes
+    index: 2
+- name: make87_messages.primitive.Int32
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: int32
+    index: 2
+- name: make87_messages.primitive.Float
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: value
+    type: float
+    index: 2
+- name: make87_messages.geometry.box.Box2D
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: x
+    type: float
+    index: 2
+  - name: y
+    type: float
+    index: 3
+  - name: width
+    type: float
+    index: 4
+  - name: height
     type: float
     index: 5
-- name: make87_messages.image.uncompressed.ImageYUV422
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: width
-    type: uint32
-    index: 2
-  - name: height
-    type: uint32
-    index: 3
-  - name: data
-    type: bytes
-    index: 4
-- name: make87_messages.image.uncompressed.ImageYUV444
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: width
-    type: uint32
-    index: 2
-  - name: height
-    type: uint32
-    index: 3
-  - name: data
-    type: bytes
-    index: 4
-- name: make87_messages.image.uncompressed.ImageRGB888
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: width
-    type: uint32
-    index: 2
-  - name: height
-    type: uint32
-    index: 3
-  - name: data
-    type: bytes
-    index: 4
-- name: make87_messages.image.uncompressed.ImageYUV420
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: width
-    type: uint32
-    index: 2
-  - name: height
-    type: uint32
-    index: 3
-  - name: data
-    type: bytes
-    index: 4
-- name: make87_messages.image.uncompressed.ImageRGBA8888
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: width
-    type: uint32
-    index: 2
-  - name: height
-    type: uint32
-    index: 3
-  - name: data
-    type: bytes
-    index: 4
-- name: make87_messages.image.uncompressed.ImageRGBAny
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: rgb888
-    type: make87_messages.image.uncompressed.ImageRGB888
-    index: 2
-  - name: rgba8888
-    type: make87_messages.image.uncompressed.ImageRGBA8888
-    index: 3
-- name: make87_messages.image.uncompressed.ImageYUVAny
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: yuv420
-    type: make87_messages.image.uncompressed.ImageYUV420
-    index: 2
-  - name: yuv422
-    type: make87_messages.image.uncompressed.ImageYUV422
-    index: 3
-  - name: yuv444
-    type: make87_messages.image.uncompressed.ImageYUV444
-    index: 4
-- name: make87_messages.image.uncompressed.ImageRawAny
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: rgb888
-    type: make87_messages.image.uncompressed.ImageRGB888
-    index: 2
-  - name: rgba8888
-    type: make87_messages.image.uncompressed.ImageRGBA8888
-    index: 3
-  - name: yuv420
-    type: make87_messages.image.uncompressed.ImageYUV420
-    index: 4
-  - name: yuv422
-    type: make87_messages.image.uncompressed.ImageYUV422
-    index: 5
-  - name: yuv444
-    type: make87_messages.image.uncompressed.ImageYUV444
+  - name: rotation
+    type: float
     index: 6
-- name: make87_messages.image.compressed.ImageJPEGWithString
+- name: make87_messages.geometry.box.Box2DAxisAligned
   fields:
   - name: header
     type: make87_messages.core.Header
     index: 1
-  - name: data
-    type: bytes
+  - name: x
+    type: float
     index: 2
-  - name: text
-    type: string
+  - name: y
+    type: float
     index: 3
-- name: make87_messages.image.compressed.ImagePNG
+  - name: width
+    type: float
+    index: 4
+  - name: height
+    type: float
+    index: 5
+- name: make87_messages.geometry.box.Boxes2DAxisAligned
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: boxes
+    type: make87_messages.geometry.box.Box2DAxisAligned
+    index: 2
+- name: make87_messages.geometry.box.Boxes2D
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: boxes
+    type: make87_messages.geometry.box.Box2D
+    index: 2
+- name: make87_messages.video.FrameH265
   fields:
   - name: header
     type: make87_messages.core.Header
@@ -636,7 +371,36 @@ messages:
   - name: data
     type: bytes
     index: 2
-- name: make87_messages.image.compressed.ImageJPEG
+  - name: width
+    type: uint32
+    index: 3
+  - name: height
+    type: uint32
+    index: 4
+  - name: is_keyframe
+    type: bool
+    index: 5
+  - name: pts
+    type: int64
+    index: 6
+  - name: dts
+    type: int64
+    index: 7
+  - name: duration
+    type: uint32
+    index: 8
+  - name: time_base
+    type: make87_messages.video.FrameH265.Fraction
+    index: 9
+- name: make87_messages.video.FrameH265.Fraction
+  fields:
+  - name: num
+    type: uint32
+    index: 1
+  - name: den
+    type: uint32
+    index: 2
+- name: make87_messages.video.FrameMpegTsH265
   fields:
   - name: header
     type: make87_messages.core.Header
@@ -734,51 +498,6 @@ messages:
   - name: data
     type: bytes
     index: 2
-- name: make87_messages.video.FrameH265
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: data
-    type: bytes
-    index: 2
-  - name: width
-    type: uint32
-    index: 3
-  - name: height
-    type: uint32
-    index: 4
-  - name: is_keyframe
-    type: bool
-    index: 5
-  - name: pts
-    type: int64
-    index: 6
-  - name: dts
-    type: int64
-    index: 7
-  - name: duration
-    type: uint32
-    index: 8
-  - name: time_base
-    type: make87_messages.video.FrameH265.Fraction
-    index: 9
-- name: make87_messages.video.FrameH265.Fraction
-  fields:
-  - name: num
-    type: uint32
-    index: 1
-  - name: den
-    type: uint32
-    index: 2
-- name: make87_messages.video.FrameMpegTsH265
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: data
-    type: bytes
-    index: 2
 - name: make87_messages.video.FrameAny
   fields:
   - name: header
@@ -807,6 +526,350 @@ messages:
   - name: av1
     type: make87_messages.video.FrameMpegTsAV1
     index: 4
+- name: make87_messages.text.LogMessage
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: level
+    type: make87_messages.text.LogMessage.LogLevel
+    index: 2
+  - name: message
+    type: string
+    index: 3
+  - name: source
+    type: string
+    index: 4
+  - name: file_name
+    type: string
+    index: 5
+  - name: line_number
+    type: int32
+    index: 6
+  - name: process_id
+    type: int64
+    index: 7
+  - name: thread_id
+    type: int64
+    index: 8
+- name: make87_messages.text.PlainText
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: body
+    type: string
+    index: 2
+- name: make87_messages.image.compressed.ImageJPEG
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: data
+    type: bytes
+    index: 2
+- name: make87_messages.image.compressed.ImageJPEGWithString
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: data
+    type: bytes
+    index: 2
+  - name: text
+    type: string
+    index: 3
+- name: make87_messages.image.compressed.ImagePNG
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: data
+    type: bytes
+    index: 2
+- name: make87_messages.image.uncompressed.ImageRGBA8888
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: width
+    type: uint32
+    index: 2
+  - name: height
+    type: uint32
+    index: 3
+  - name: data
+    type: bytes
+    index: 4
+- name: make87_messages.image.uncompressed.ImageYUV420
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: width
+    type: uint32
+    index: 2
+  - name: height
+    type: uint32
+    index: 3
+  - name: data
+    type: bytes
+    index: 4
+- name: make87_messages.image.uncompressed.ImageNV12
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: width
+    type: uint32
+    index: 2
+  - name: height
+    type: uint32
+    index: 3
+  - name: data
+    type: bytes
+    index: 4
+- name: make87_messages.image.uncompressed.ImageYUV444
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: width
+    type: uint32
+    index: 2
+  - name: height
+    type: uint32
+    index: 3
+  - name: data
+    type: bytes
+    index: 4
+- name: make87_messages.image.uncompressed.ImageRGB888
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: width
+    type: uint32
+    index: 2
+  - name: height
+    type: uint32
+    index: 3
+  - name: data
+    type: bytes
+    index: 4
+- name: make87_messages.image.uncompressed.ImageYUV422
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: width
+    type: uint32
+    index: 2
+  - name: height
+    type: uint32
+    index: 3
+  - name: data
+    type: bytes
+    index: 4
+- name: make87_messages.image.uncompressed.ImageRGBAny
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: rgb888
+    type: make87_messages.image.uncompressed.ImageRGB888
+    index: 2
+  - name: rgba8888
+    type: make87_messages.image.uncompressed.ImageRGBA8888
+    index: 3
+- name: make87_messages.image.uncompressed.ImageYUVAny
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: yuv420
+    type: make87_messages.image.uncompressed.ImageYUV420
+    index: 2
+  - name: yuv422
+    type: make87_messages.image.uncompressed.ImageYUV422
+    index: 3
+  - name: yuv444
+    type: make87_messages.image.uncompressed.ImageYUV444
+    index: 4
+  - name: nv12
+    type: make87_messages.image.uncompressed.ImageNV12
+    index: 5
+- name: make87_messages.image.uncompressed.ImageRawAny
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: rgb888
+    type: make87_messages.image.uncompressed.ImageRGB888
+    index: 2
+  - name: rgba8888
+    type: make87_messages.image.uncompressed.ImageRGBA8888
+    index: 3
+  - name: yuv420
+    type: make87_messages.image.uncompressed.ImageYUV420
+    index: 4
+  - name: yuv422
+    type: make87_messages.image.uncompressed.ImageYUV422
+    index: 5
+  - name: yuv444
+    type: make87_messages.image.uncompressed.ImageYUV444
+    index: 6
+  - name: nv12
+    type: make87_messages.image.uncompressed.ImageNV12
+    index: 7
+- name: make87_messages.detection.box.Box2D
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: geometry
+    type: make87_messages.geometry.box.Box2D
+    index: 2
+  - name: confidence
+    type: float
+    index: 3
+  - name: class_id
+    type: int32
+    index: 4
+- name: make87_messages.detection.box.Box2DAxisAligned
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: geometry
+    type: make87_messages.geometry.box.Box2DAxisAligned
+    index: 2
+  - name: confidence
+    type: float
+    index: 3
+  - name: class_id
+    type: int32
+    index: 4
+- name: make87_messages.detection.box.Boxes2D
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: boxes
+    type: make87_messages.detection.box.Box2D
+    index: 2
+- name: make87_messages.detection.box.Boxes2DAxisAligned
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: boxes
+    type: make87_messages.detection.box.Box2DAxisAligned
+    index: 2
+- name: make87_messages.detection.ontology.ModelOntology
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: classes
+    type: make87_messages.detection.ontology.ModelOntology.ClassEntry
+    index: 2
+- name: make87_messages.detection.ontology.ModelOntology.ClassEntry
+  fields:
+  - name: id
+    type: int32
+    index: 1
+  - name: label
+    type: string
+    index: 2
+- name: make87_messages.spatial.rotation.Quaternion
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: x
+    type: float
+    index: 2
+  - name: y
+    type: float
+    index: 3
+  - name: z
+    type: float
+    index: 4
+  - name: w
+    type: float
+    index: 5
+- name: make87_messages.spatial.translation.Translation2D
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: x
+    type: float
+    index: 2
+  - name: y
+    type: float
+    index: 3
+- name: make87_messages.spatial.pose.Pose2D
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: translation
+    type: make87_messages.spatial.translation.Translation2D
+    index: 2
+  - name: rotation
+    type: float
+    index: 3
+- name: make87_messages.spatial.translation.Translation3D
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: x
+    type: float
+    index: 2
+  - name: y
+    type: float
+    index: 3
+  - name: z
+    type: float
+    index: 4
+- name: make87_messages.spatial.pose.Pose3D
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: translation
+    type: make87_messages.spatial.translation.Translation3D
+    index: 2
+  - name: rotation
+    type: make87_messages.spatial.rotation.Quaternion
+    index: 3
+- name: make87_messages.spatial.translation.Translation1D
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: x
+    type: float
+    index: 2
+- name: make87_messages.datetime.TimeStamp
+  fields:
+  - name: timestamp
+    type: google.protobuf.Timestamp
+    index: 1
+- name: make87_messages.datetime.Range
+  fields:
+  - name: header
+    type: make87_messages.core.Header
+    index: 1
+  - name: start
+    type: google.protobuf.Timestamp
+    index: 2
+  - name: end
+    type: google.protobuf.Timestamp
+    index: 3
 - name: make87_messages.transport.endpoint.Endpoint
   fields:
   - name: header
@@ -942,132 +1005,89 @@ messages:
   - name: value
     type: string
     index: 2
-- name: make87_messages.geometry.box.Boxes2D
+- name: make87_messages.audio.FramePcmS16le
   fields:
   - name: header
     type: make87_messages.core.Header
     index: 1
-  - name: boxes
-    type: make87_messages.geometry.box.Box2D
+  - name: data
+    type: bytes
     index: 2
-- name: make87_messages.geometry.box.Boxes2DAxisAligned
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: boxes
-    type: make87_messages.geometry.box.Box2DAxisAligned
-    index: 2
-- name: make87_messages.spatial.translation.Translation2D
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: x
-    type: float
-    index: 2
-  - name: y
-    type: float
+  - name: pts
+    type: int64
     index: 3
-- name: make87_messages.spatial.translation.Translation1D
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: x
-    type: float
-    index: 2
-- name: make87_messages.spatial.translation.Translation3D
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: x
-    type: float
-    index: 2
-  - name: y
-    type: float
-    index: 3
-  - name: z
-    type: float
+  - name: time_base
+    type: make87_messages.audio.FramePcmS16le.Fraction
     index: 4
-- name: make87_messages.spatial.rotation.Quaternion
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: x
-    type: float
-    index: 2
-  - name: y
-    type: float
-    index: 3
-  - name: z
-    type: float
-    index: 4
-  - name: w
-    type: float
+  - name: channels
+    type: uint32
     index: 5
-- name: make87_messages.spatial.pose.Pose3D
+- name: make87_messages.audio.FramePcmS16le.Fraction
+  fields:
+  - name: num
+    type: uint32
+    index: 1
+  - name: den
+    type: uint32
+    index: 2
+- name: make87_messages.audio.FrameOpus
   fields:
   - name: header
     type: make87_messages.core.Header
     index: 1
-  - name: translation
-    type: make87_messages.spatial.translation.Translation3D
-    index: 2
-  - name: rotation
-    type: make87_messages.spatial.rotation.Quaternion
-    index: 3
-- name: make87_messages.spatial.pose.Pose2D
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: translation
-    type: make87_messages.spatial.translation.Translation2D
-    index: 2
-  - name: rotation
-    type: float
-    index: 3
-- name: make87_messages.file.RelativePathFile
-  fields:
-  - name: header
-    type: make87_messages.core.Header
-    index: 1
-  - name: path
-    type: string
-    index: 2
   - name: data
     type: bytes
+    index: 2
+  - name: pts
+    type: int64
     index: 3
-- name: make87_messages.file.AbsolutePathFile
+  - name: time_base
+    type: make87_messages.audio.FrameOpus.Fraction
+    index: 4
+- name: make87_messages.audio.FrameOpus.Fraction
+  fields:
+  - name: num
+    type: uint32
+    index: 1
+  - name: den
+    type: uint32
+    index: 2
+- name: make87_messages.audio.FrameAac
   fields:
   - name: header
     type: make87_messages.core.Header
     index: 1
-  - name: path
-    type: string
-    index: 2
   - name: data
     type: bytes
+    index: 2
+  - name: pts
+    type: int64
     index: 3
-- name: make87_messages.datetime.TimeStamp
+  - name: time_base
+    type: make87_messages.audio.FrameAac.Fraction
+    index: 4
+- name: make87_messages.audio.FrameAac.Fraction
   fields:
-  - name: timestamp
-    type: google.protobuf.Timestamp
+  - name: num
+    type: uint32
     index: 1
-- name: make87_messages.datetime.Range
+  - name: den
+    type: uint32
+    index: 2
+- name: make87_messages.audio.FrameAny
   fields:
   - name: header
     type: make87_messages.core.Header
     index: 1
-  - name: start
-    type: google.protobuf.Timestamp
+  - name: pcm_s16le
+    type: make87_messages.audio.FramePcmS16le
     index: 2
-  - name: end
-    type: google.protobuf.Timestamp
+  - name: aac
+    type: make87_messages.audio.FrameAac
     index: 3
+  - name: opus
+    type: make87_messages.audio.FrameOpus
+    index: 4
 enums:
 - name: make87_messages.text.LogMessage.LogLevel
   values:
