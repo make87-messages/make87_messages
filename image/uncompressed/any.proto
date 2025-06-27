@@ -8,6 +8,7 @@ import "make87_messages/image/uncompressed/image_rgba8888.proto";
 import "make87_messages/image/uncompressed/image_yuv420.proto";
 import "make87_messages/image/uncompressed/image_yuv422.proto";
 import "make87_messages/image/uncompressed/image_yuv444.proto";
+import "make87_messages/image/uncompressed/image_nv12.proto";
 
 
 message ImageRGBAny {
@@ -31,10 +32,12 @@ message ImageYUVAny {
   // - The YUV420 encoded frame data.
   // - The YUV422 encoded frame data.
   // - The YUV444 encoded frame data.
+  // - The NV12 encoded frame data.
   oneof image {
     ImageYUV420 yuv420 = 2;
     ImageYUV422 yuv422 = 3;
     ImageYUV444 yuv444 = 4;
+    ImageNV12 nv12 = 5;
   }
 }
 
@@ -48,11 +51,13 @@ message ImageRawAny {
   // - The YUV420 encoded frame data.
   // - The YUV422 encoded frame data.
   // - The YUV444 encoded frame data.
+  // - The NV12 encoded frame data.
   oneof image {
     ImageRGB888 rgb888 = 2;
     ImageRGBA8888 rgba8888 = 3;
     ImageYUV420 yuv420 = 4;
     ImageYUV422 yuv422 = 5;
     ImageYUV444 yuv444 = 6;
+    ImageNV12 nv12 = 7;
   }
 }

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package make87_messages.image.uncompressed;
+
+import "make87_messages/core/header.proto";
+
+// NV12 is a planar YUV 4:2:0 format with a full-sized Y plane followed by a single interleaved UV plane.
+message ImageNV12 {
+  make87_messages.core.Header header = 1;
+
+  uint32 width = 2; // Image width in pixels.
+  uint32 height = 3; // Image height in pixels.
+  bytes data = 4; // NV12 data: Y plane (width*height bytes) followed by interleaved UV plane (width*height/2 bytes).
+}
